@@ -49,7 +49,7 @@ class CounterInheritedWidgetState extends State<CounterInheritedWidget> {
 
   void decrement() {
     setState(() {
-      _count++;
+      _count--;
     });
   }
 

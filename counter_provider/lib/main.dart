@@ -71,7 +71,7 @@ class CounterText extends StatelessWidget {
       // some heavy widget which is not rebuilt whenever model state changes
       child: Container(
         padding: const EdgeInsets.all(8.0),
-        child: Icon(Icons.insert_emoticon),
+        child: Text('Count'),
       ),
     );
   }
