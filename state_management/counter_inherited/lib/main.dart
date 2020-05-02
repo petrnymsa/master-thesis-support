@@ -51,7 +51,7 @@ class CounterTextContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          CounterTextIcon(),
+          const Text('Count'),
           const SizedBox(width: 5),
           CounterText()
         ],
@@ -70,13 +70,13 @@ class CounterText extends StatelessWidget {
   }
 }
 
-class CounterTextIcon extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    print('CounterTextIcon rebuild');
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      child: Icon(Icons.insert_emoticon),
-    );
-  }
-}
+// class CounterTextIcon extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     print('CounterTextIcon rebuild');
+//     return Container(
+//       padding: const EdgeInsets.all(8.0),
+//       child: Icon(Icons.insert_emoticon),
+//     );
+//   }
+// }
