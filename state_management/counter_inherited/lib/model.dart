@@ -1,63 +1,46 @@
 import 'package:flutter/material.dart';
 
-class _CounterModelInherited extends InheritedWidget {
-  _CounterModelInherited({
-    Key key,
+/// Defines InheritedWidget which can access CounterModel
+class _CounterInherited extends InheritedWidget {
+  _CounterInherited({
     @required Widget child,
     @required this.data,
-  }) : super(key: key, child: child);
+  }) : super(child: child);
 
-  final CounterInheritedWidgetState data;
+  final CounterModel data;
 
   @override
-  bool updateShouldNotify(_CounterModelInherited oldWidget) {
-    return true;
-  }
+  bool updateShouldNotify(_CounterInherited oldWidget) => true;
 }
 
-class CounterInheritedWidget extends StatefulWidget {
-  CounterInheritedWidget({
-    Key key,
-    this.child,
-  }) : super(key: key);
+///Provides wrapper around CounterInherited and of method convetion to access CounterModel
+class CounterModelProvider extends StatefulWidget {
+  CounterModelProvider({this.child});
 
   final Widget child;
 
   @override
-  CounterInheritedWidgetState createState() =>
-      new CounterInheritedWidgetState();
+  CounterModel createState() => CounterModel();
 
-  static CounterInheritedWidgetState of(BuildContext context,
-      {bool listen = true}) {
+  static CounterModel of(BuildContext context, {bool listen = true}) {
     return (listen
-            ? context
-                .dependOnInheritedWidgetOfExactType<_CounterModelInherited>()
-            : context.findAncestorWidgetOfExactType<_CounterModelInherited>())
+            ? context.dependOnInheritedWidgetOfExactType<_CounterInherited>()
+            : context.findAncestorWidgetOfExactType<_CounterInherited>())
         .data;
   }
 }
 
-class CounterInheritedWidgetState extends State<CounterInheritedWidget> {
+///CounterModel holds actual data and business logic
+class CounterModel extends State<CounterModelProvider> {
   int _count = 0;
   int get count => _count;
 
-  void increment() {
-    setState(() {
-      _count++;
-    });
-  }
+  void increment() => setState(() => _count++);
 
-  void decrement() {
-    setState(() {
-      _count--;
-    });
-  }
+  void decrement() => setState(() => _count--);
 
   @override
   Widget build(BuildContext context) {
-    return new _CounterModelInherited(
-      data: this,
-      child: widget.child,
-    );
+    return _CounterInherited(data: this, child: widget.child);
   }
 }

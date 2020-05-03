@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'InheritedWidget demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: CounterInheritedWidget(
+      home: CounterModelProvider(
         child: HomePage(),
       ),
     );
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = CounterInheritedWidget.of(context, listen: false);
+    final model = CounterModelProvider.of(context, listen: false);
     print('HomePage rebuild');
     return Scaffold(
       appBar: AppBar(title: CounterTextContainer()),
@@ -64,19 +64,7 @@ class CounterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('CounterText rebuild');
-    final CounterInheritedWidgetState state =
-        CounterInheritedWidget.of(context);
+    final CounterModel state = CounterModelProvider.of(context);
     return Text(state.count.toString());
   }
 }
-
-// class CounterTextIcon extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     print('CounterTextIcon rebuild');
-//     return Container(
-//       padding: const EdgeInsets.all(8.0),
-//       child: Icon(Icons.insert_emoticon),
-//     );
-//   }
-// }
