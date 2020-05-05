@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 
 class CounterModel with ChangeNotifier {
   int _count = 0;
-
   int get count => _count;
 
   void increment() {
@@ -11,7 +10,7 @@ class CounterModel with ChangeNotifier {
   }
 
   void decrement() {
-    _count++;
+    _count--;
     notifyListeners();
   }
 }

@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Defines InheritedWidget which can access CounterModel
 class _CounterInherited extends InheritedWidget {
-  _CounterInherited({
-    @required Widget child,
-    @required this.data,
-  }) : super(child: child);
+  _CounterInherited({Widget child, this.data}) : super(child: child);
 
   final CounterModel data;
 

@@ -24,22 +24,21 @@ class HomePage extends StatelessWidget {
     final model = CounterModelProvider.of(context, listen: false);
     print('HomePage rebuild');
     return Scaffold(
-      appBar: AppBar(title: CounterTextContainer()),
-      body: Center(child: CounterTextContainer()),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            onPressed: model.increment,
-            child: Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            onPressed: model.decrement,
-            child: Icon(Icons.remove),
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(title: CounterTextContainer()),
+        body: Center(child: CounterTextContainer()),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: model.increment,
+              child: Icon(Icons.add),
+            ),
+            FloatingActionButton(
+              onPressed: model.decrement,
+              child: Icon(Icons.remove),
+            )
+          ],
+        ));
   }
 }
 
@@ -50,7 +49,7 @@ class CounterTextContainer extends StatelessWidget {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        children: [
           const Text('Count'),
           const SizedBox(width: 5),
           CounterText()
@@ -64,7 +63,7 @@ class CounterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('CounterText rebuild');
-    final CounterModel state = CounterModelProvider.of(context);
-    return Text(state.count.toString());
+    final CounterModel model = CounterModelProvider.of(context);
+    return Text(model.count.toString());
   }
 }
