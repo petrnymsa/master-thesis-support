@@ -31,8 +31,8 @@ class HomePage extends StatelessWidget {
     final model = Provider.of<CounterModel>(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(title: CounterText()),
-      body: Center(child: CounterText()),
+      appBar: AppBar(title: CounterTextContainer()),
+      body: Center(child: CounterTextContainer()),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class CounterText extends StatelessWidget {
+class CounterTextContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('CounterText rebuild');
@@ -63,15 +63,15 @@ class CounterText extends StatelessWidget {
             children: <Widget>[
               child,
               const SizedBox(width: 5),
-              Text(model.count.toString())
+              Text('Count: ${model.count}') // CounterText
             ],
           ),
         );
       },
-      // some heavy widget which is not rebuilt whenever model state changes
+      // child widget is not rebuilt when model changes
       child: Container(
         padding: const EdgeInsets.all(8.0),
-        child: Text('Count'),
+        child: Icon(Icons.computer),
       ),
     );
   }

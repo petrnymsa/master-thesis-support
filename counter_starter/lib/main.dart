@@ -30,8 +30,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Count $_counter')),
-      body: Center(child: Text('Count: $_counter')),
+      appBar: AppBar(title: CounterTextContainer(_counter)),
+      body: Center(child: CounterTextContainer(_counter)),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -43,6 +43,27 @@ class _HomePageState extends State<HomePage> {
             onPressed: _decrementCounter,
             child: Icon(Icons.remove),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class CounterTextContainer extends StatelessWidget {
+  final int count;
+
+  CounterTextContainer(this.count);
+
+  @override
+  Widget build(BuildContext context) {
+    print('CounterTextContainer rebuild');
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.computer),
+          const SizedBox(width: 5),
+          Text('Count: $count')
         ],
       ),
     );

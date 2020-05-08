@@ -50,7 +50,7 @@ class CounterTextContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Count'),
+          const Icon(Icons.computer),
           const SizedBox(width: 5),
           CounterText()
         ],
@@ -64,6 +64,6 @@ class CounterText extends StatelessWidget {
   Widget build(BuildContext context) {
     print('CounterText rebuild');
     final CounterModel model = CounterModelProvider.of(context);
-    return Text(model.count.toString());
+    return Text('Count: ${model.count}');
   }
 }
